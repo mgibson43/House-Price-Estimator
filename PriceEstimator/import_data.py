@@ -28,12 +28,12 @@ settings.configure(
 
 django.setup()
 
-from estimator.models import State, CityCodes, CityState
+from estimator.models import State, CityCode, CityState
 import pandas as pd
 
 State.objects.all().delete()
 CityState.objects.all().delete()
-CityCodes.objects.all().delete()
+CityCode.objects.all().delete()
 
 file_path = '../Data/city-state-data.csv'
 df = pd.read_csv(file_path)
@@ -56,7 +56,7 @@ def import_data(df):
       )
     curr_city=CityState.objects.get(city=row['city'])
 
-    CityCodes.objects.get_or_create(
+    CityCode.objects.get_or_create(
         code=row['city code'],
         city=curr_city
     )

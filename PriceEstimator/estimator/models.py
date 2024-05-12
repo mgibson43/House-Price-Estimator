@@ -21,7 +21,7 @@ class CityState(models.Model):
   def __str__(self):
     return f'City: {self.city} | State: {self.state}'
 
-class CityCodes(models.Model):
+class CityCode(models.Model):
   id = models.AutoField(primary_key=True)
   city = models.ForeignKey(CityState, on_delete=models.CASCADE)
   code = models.FloatField()

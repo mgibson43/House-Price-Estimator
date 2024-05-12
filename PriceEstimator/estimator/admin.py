@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import State, CityState, CityCodes
+from .models import State, CityState, CityCode
 
-admin.site.register([State, CityState, CityCodes])
+admin.site.register([State, CityState, CityCode])
