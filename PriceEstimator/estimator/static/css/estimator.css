@@ -1,0 +1,14 @@
+body {
+  display: flexbox;
+}
+
+h1 {
+  color: #333;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  color: #333;
+  font-size: 18px;
+}

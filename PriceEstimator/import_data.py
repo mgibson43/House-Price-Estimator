@@ -44,20 +44,20 @@ def import_data(df):
   for index, row in df.iterrows():
     print(index)
     State.objects.get_or_create(
-        state=row['state'],
+        id=row['state'],
       )
 
-    print(State.objects.get(state=row['state']))
-    curr_state=State.objects.get(state=row['state'])
+    print(State.objects.get(id=row['state']))
+    curr_state=State.objects.get(id=row['state'])
 
     CityState.objects.get_or_create(
-        city=row['city'],
+        id=row['city'],
         state=curr_state,
       )
-    curr_city=CityState.objects.get(city=row['city'])
+    curr_city=CityState.objects.get(id=row['city'])
 
     CityCode.objects.get_or_create(
-        code=row['city code'],
+        id=row['city code'],
         city=curr_city
     )
 
