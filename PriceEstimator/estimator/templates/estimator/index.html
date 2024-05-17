@@ -18,7 +18,7 @@
       </div>
       
       <div class="d-flex justify-content-center">
-        <form action="/estimation" method="post">
+        <form action="{% url 'estimation' %}" method="post">
           {% csrf_token %}
           <div>
             <label for="beds">Beds</label>
@@ -51,7 +51,7 @@
 
           <div>
             <label for="sqft">Square feet</label>
-            <input type="text" id="sqft" name="sqtf">
+            <input type="text" id="sqft" name="sqft">
           </div>
 
           <input type="submit" value="Submit">

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'estimator',
-    'django_extensions',
+    'sklearn',
     'pandas',
 ]
 
