@@ -9,7 +9,7 @@ env/
 venv/
 
 # Database
-db.sqlite3
+PriceEstimator/db.sqlite3
 
 # Static folder at project root
 /static/
