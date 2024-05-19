@@ -1,1 +1,3 @@
-web: gunicorn PriceEstimator.PriceEstimator.wsgi
+web: gunicorn PriceEstimator.wsgi --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
