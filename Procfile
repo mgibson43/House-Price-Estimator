@@ -1,1 +1,1 @@
-web: gunicorn PriceEstimator.wsgi
+web: gunicorn PriceEstimator.PriceEstimator.wsgi
