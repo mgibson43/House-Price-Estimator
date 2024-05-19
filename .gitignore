@@ -13,7 +13,7 @@ PriceEstimator/db.sqlite3
 
 # Static folder at project root
 /static/
-
+git
 # macOS
 ._*
 .DS_Store
