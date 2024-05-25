@@ -17,41 +17,47 @@
         </header>
       </div>
       
-      <div class="d-flex justify-content-center">
+      <div class="container d-flex justify-content-center">
         <form action="{% url 'estimation' %}" method="post">
           {% csrf_token %}
-          <div>
-            <label for="beds">Beds</label>
-            <input type="text" id="beds" name="beds">
+          <div class="row g-1">
+            <fieldset class="form-floating mb-3 col">
+              <input type="text" id="beds" name="beds" class="form-control" placeholder="Beds"> 
+              <label for="beds">Beds</label>
+            </fieldset>
+
+            <fieldset class="form-floating mb-3 col">
+              <input type="text" id="baths" name="baths" class="form-control" placeholder="Baths">
+              <label for="baths">Baths</label>
+            </fieldset>
           </div>
 
-          <div>
-            <label for="baths">Baths</label>
-            <input type="text" id="baths" name="baths">
+          <div class="row g-1">
+            <fieldset class="form-floating mb-3 col">
+              <input type="text" id="lot" name="lot" class="form-control" placeholder="Lot size">
+              <label for="lot">Lot size</label>
+            </fieldset>
+
+            <fieldset class="form-floating mb-3 col">
+              <input type="text" id="sqft" name="sqft" class="form-control" placeholder="Square feet">
+              <label for="sqft">Square feet</label>
+            </fieldset>
           </div>
 
-          <div>
-            <label for="lot">Lot size</label>
-            <input type="text" id="lot" name="lot">
-          </div>
-
-          <div id="state-box">
-            <label for="state">State</label>
-            <select id="state" name="state">
-              
-            </select>
-          </div>
-          
-          <div id="state-box">
-            <label for="city">City</label>
-            <select id="city" name="city">
-              
-            </select>
-          </div>
-
-          <div>
-            <label for="sqft">Square feet</label>
-            <input type="text" id="sqft" name="sqft">
+          <div class="row g-1">
+            <fieldset id="state-box" class="form-floating mb-3 col">
+              <select id="state" name="state" class="form-select">
+                
+              </select>
+              <label for="state">State</label>
+            </fieldset>
+            
+            <fieldset id="city-box" class="form-floating mb-3 col">
+              <select id="city" name="city" class="form-select">
+                
+              </select>
+              <label for="city">City</label>
+            </fieldset>
           </div>
 
           <input type="submit" value="Submit">

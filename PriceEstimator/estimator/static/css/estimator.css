@@ -12,3 +12,7 @@ p {
   color: #333;
   font-size: 18px;
 }
+
+.form-field {
+  gap: 2em;
+}

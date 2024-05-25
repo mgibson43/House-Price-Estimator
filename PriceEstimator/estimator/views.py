@@ -21,5 +21,5 @@ def getModels(request, *args, **kwargs):
 
 def estimation(request):
   house = createHouse(request.POST.dict())
-  estimation = round(estateEstimation(house)[0], 0)
+  estimation = estateEstimation(house)
   return render(request, 'estimator/estimation.html', {'estimation':estimation})

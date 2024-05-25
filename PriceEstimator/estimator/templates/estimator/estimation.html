@@ -18,7 +18,11 @@
       </div>
       
       <div class="d-flex justify-content-center">
-        {{ estimation }}
+        <p>Median: {{ estimation.1 }}</p>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <p>Range: {{ estimation.0 }} - {{ estimation.2 }}</p>
       </div>
 
       <div>
