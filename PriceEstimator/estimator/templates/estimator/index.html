@@ -10,59 +10,72 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-sm mt-3 mb-3">
       <div class="d-flex justify-content-center">
         <header>
           <h1>House Price Estimator</h1>
         </header>
       </div>
       
-      <div class="container d-flex justify-content-center">
-        <form action="{% url 'estimation' %}" method="post">
-          {% csrf_token %}
-          <div class="row g-1">
-            <fieldset class="form-floating mb-3 col">
-              <input type="text" id="beds" name="beds" class="form-control" placeholder="Beds"> 
-              <label for="beds">Beds</label>
-            </fieldset>
+      
+      <form class="container-sm justify-content-center text-center" action="{% url 'estimation' %}" method="post">
+        {% csrf_token %}
 
-            <fieldset class="form-floating mb-3 col">
-              <input type="text" id="baths" name="baths" class="form-control" placeholder="Baths">
-              <label for="baths">Baths</label>
+        <div class="row g-2 mb-2">
+          <div class="col">
+            <fieldset class="form-floating">
+              <input type="number" step="1" id="beds" name="beds" class="form-control needs-validation" placeholder="Beds" required> 
+              <label for="beds">Beds</label>
             </fieldset>
           </div>
 
-          <div class="row g-1">
-            <fieldset class="form-floating mb-3 col">
-              <input type="text" id="lot" name="lot" class="form-control" placeholder="Lot size">
+          <div class="col">
+            <fieldset class="form-floating">
+              <input type="number" step="1" id="baths" name="baths" class="form-control needs-validation" placeholder="Baths" required>
+              <label for="baths">Baths</label>
+            </fieldset>
+          </div>  
+        </div>
+
+        <div class="row g-2 mb-2">
+          <div class="col">
+            <fieldset class="form-floating">
+              <input type="number" step="0.01" id="lot" name="lot" class="form-control needs-validation" placeholder="Lot size" required>
               <label for="lot">Lot size</label>
             </fieldset>
+          </div>
 
-            <fieldset class="form-floating mb-3 col">
-              <input type="text" id="sqft" name="sqft" class="form-control" placeholder="Square feet">
+          <div class="col">
+            <fieldset class="form-floating">
+              <input type="number" step="1" id="sqft" name="sqft" class="form-control needs-validation" placeholder="Square feet" required>
               <label for="sqft">Square feet</label>
             </fieldset>
           </div>
+        </div>
 
-          <div class="row g-1">
-            <fieldset id="state-box" class="form-floating mb-3 col">
-              <select id="state" name="state" class="form-select">
+        <div class="row g-2 mb-2">
+          <div class="col">
+            <fieldset id="state-box" class="form-floating">
+              <select id="state" name="state" class="form-select" required>
                 
               </select>
               <label for="state">State</label>
             </fieldset>
-            
-            <fieldset id="city-box" class="form-floating mb-3 col">
-              <select id="city" name="city" class="form-select">
+          </div>
+          
+          <div class="col mb-1">
+            <fieldset id="city-box" class="form-floating">
+              <select id="city" name="city" class="form-select" required>
                 
               </select>
               <label for="city">City</label>
             </fieldset>
           </div>
+        </div>
 
-          <input type="submit" value="Submit">
-        </form>
-      </div>
+        <input id="btn-submit" class="btn btn-primary btn-lg btn-submit" type="submit" value="Estimate">
+      </form>
+    
     </div>
     <script src="{% static 'js/index.js' %}"></script>
   </body>

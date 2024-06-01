@@ -75,6 +75,10 @@ def estateEstimation(house):
   prediction = realtorModel.predict(house)
 
   offset = prediction * 0.29
+  
+  if offset > 100000:
+    offset = prediction * 0.1
+  
   lowerBound = prediction - offset
   upperBound = prediction + offset
 

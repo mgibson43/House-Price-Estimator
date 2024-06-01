@@ -1,72 +1,94 @@
-// Initialize city and state URLS
-let stateUrl = '/state-json/'
-let cityUrl = '/city-json/'
+(() => {
+ 'use strict'
 
-// Get state and city dropdown menus
-const stateBox = document.getElementById('state')
-const cityBox = document.getElementById('city')
+  // Initialize city and state URLS
+  let stateUrl = '/state-json/'
 
-setStateDefault()
-setCityDefault()
-
-// Fetch state data from database and set each state dropdown option
-fetch(stateUrl)
-  .then(response => response.json())
-  .then(data => {
-    const stateData = data.data
-
-    stateData.map(item=>{
-      const option = document.createElement('option')
-      option.textContent = item.id
-      option.setAttribute('class', 'item')
-      option.setAttribute('value', item.id)
-      stateBox.appendChild(option)
-    })
-  })
-  .catch(error => console.error('Error:', error))
-
-// Listen for changes in the state dropdown menu and update city dropdown menu accordingly
-stateBox.addEventListener("change", updateCity)
-
-// Update city dropdown menu based on selected state
-function updateCity(e) {
-  cityBox.innerHTML = ''
-  setCityDefault()
-  const selectedState = e.target.value
-
-  // Use get response to retrieve only cities that are located within the selected state
-  if (selectedState != '') {
-    fetch(`models-json/${selectedState}/`)
+  // Get state and city dropdown menus
+  const stateBox = document.getElementById('state')
+  const cityBox = document.getElementById('city')
+ 
+  // Fetch state data from database and set each state dropdown option
+  fetch(stateUrl)
     .then(response => response.json())
     .then(data => {
-      const cityData = data.data
+      const stateData = data.data
 
-      // Set city dropdown menu options
-      cityData.map(item=>{
+      stateData.map(item=>{
         const option = document.createElement('option')
         option.textContent = item.id
         option.setAttribute('class', 'item')
         option.setAttribute('value', item.id)
-        cityBox.appendChild(option)
+        stateBox.appendChild(option)
       })
     })
     .catch(error => console.error('Error:', error))
-  }  
-}
 
-// Set the city and state dropdown menus to a default configuration
-function setCityDefault() {
-  const cityDefault = document.createElement('option')
-  cityDefault.textContent = '----------'
-  cityDefault.setAttribute('class', 'item')
-  cityDefault.setAttribute('value', '')
-  cityBox.appendChild(cityDefault)
-}
+  // Update city dropdown menu based on selected state
+  function updateCity(e) {
+    cityBox.innerHTML = ''
+    setCityDefault()
+    const selectedState = e.target.value
 
-function setStateDefault() {
-  const stateDefault = document.createElement('option')
-  stateDefault.textContent = '----------'
-  stateDefault.setAttribute('class', 'item')
-  stateDefault.setAttribute('value', '')
-  stateBox.appendChild(stateDefault)
-}
+    // Use get response to retrieve only cities that are located within the selected state
+    if (selectedState != '') {
+      fetch(`models-json/${selectedState}/`)
+      .then(response => response.json())
+      .then(data => {
+        const cityData = data.data
+
+        // Set city dropdown menu options
+        cityData.map(item=>{
+          const option = document.createElement('option')
+          option.textContent = item.id
+          option.setAttribute('class', 'item')
+          option.setAttribute('value', item.id)
+          cityBox.appendChild(option)
+        })
+      })
+      .catch(error => console.error('Error:', error))
+    }  
+  }
+
+  // Set the city and state dropdown menus to a default configuration
+  function setCityDefault() {
+    const cityDefault = document.createElement('option')
+    cityDefault.textContent = '----------'
+    cityDefault.setAttribute('class', 'item')
+    cityDefault.setAttribute('value', '')
+    cityBox.appendChild(cityDefault)
+  }
+
+  function setStateDefault() {
+    const stateDefault = document.createElement('option')
+    stateDefault.textContent = '----------'
+    stateDefault.setAttribute('class', 'item')
+    stateDefault.setAttribute('value', '')
+    stateBox.appendChild(stateDefault)
+  }
+
+  function checkValidity() {
+    let flag = true
+
+    Array.from(forms).forEach(form => {
+      try {
+        const value = Number(form.value)
+      } catch (error) {
+        flag = false
+      }
+    })
+
+    if (flag == true) {
+      submit.disabled = false
+    }
+    else {
+      submit.disabled = true
+    }
+  }
+
+  // Listen for changes in the state dropdown menu and update city dropdown menu accordingly
+  stateBox.addEventListener("change", updateCity)
+
+  setStateDefault()
+  setCityDefault()
+})()
