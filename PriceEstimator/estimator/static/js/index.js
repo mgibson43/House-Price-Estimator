@@ -67,25 +67,6 @@
     stateBox.appendChild(stateDefault)
   }
 
-  function checkValidity() {
-    let flag = true
-
-    Array.from(forms).forEach(form => {
-      try {
-        const value = Number(form.value)
-      } catch (error) {
-        flag = false
-      }
-    })
-
-    if (flag == true) {
-      submit.disabled = false
-    }
-    else {
-      submit.disabled = true
-    }
-  }
-
   // Listen for changes in the state dropdown menu and update city dropdown menu accordingly
   stateBox.addEventListener("change", updateCity)
 
